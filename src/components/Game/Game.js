@@ -1,5 +1,5 @@
 import React from 'react'
-import TextInput from './TextInput'
+import TextInput from '../TextInput/TextInput'
 
 import { sample } from '../../utils'
 import { WORDS } from '../../data'
@@ -10,7 +10,11 @@ const answer = sample(WORDS)
 console.info({ answer })
 
 function Game() {
-	return <TextInput />
+	return (
+		<>
+			<TextInput />
+		</>
+	)
 }
 
 export default Game
