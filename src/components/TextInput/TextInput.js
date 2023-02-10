@@ -22,14 +22,14 @@ function TextInput({ handleGuessSubmit }) {
 				<label htmlFor='guess-input'>Enter guess:</label>
 				<input
 					required
-					style={{ textTransform: 'uppercase' }}
 					id='guess-input'
 					type='text'
 					minLength={5}
 					maxLength={5}
 					value={tentativeGuess}
 					onChange={(event) => {
-						setTentativeGuess(event.target.value)
+						const nextGuess = event.target.value.toUpperCase()
+						setTentativeGuess(nextGuess)
 					}}
 				/>
 			</form>
