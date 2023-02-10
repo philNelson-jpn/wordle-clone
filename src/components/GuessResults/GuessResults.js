@@ -1,26 +1,13 @@
-import React, { useState } from 'react'
-import TextInput from '../TextInput/TextInput'
+import React from 'react'
 
-function GuessResults() {
-	const [guessResults, setGuessResults] = useState()
-	function handleAddGuess(label) {
-		const newGuess = {
-			label,
-			id: Math.random(),
-		}
-
-		const nextGuess = [...guessResults, newGuess]
-		setGuessResults(nextGuess)
-	}
+function GuessResults({ guesses }) {
 	return (
-		<div class='guess-results'>
-			{guessResults.map(({ id, label }) => (
-				<p key={id} className='guess'>
-					{label}
+		<div className='guess-results'>
+			{guesses.map((guess, index) => (
+				<p key={index} className='guess'>
+					{guess.toUpperCase()}
 				</p>
 			))}
-
-			<TextInput handleAddGuess={handleAddGuess} />
 		</div>
 	)
 }

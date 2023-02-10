@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import TextInput from '../TextInput/TextInput'
-
+import GuessResults from '../GuessResults/GuessResults'
 import { sample } from '../../utils'
 import { WORDS } from '../../data'
 
@@ -10,9 +10,15 @@ const answer = sample(WORDS)
 console.info({ answer })
 
 function Game() {
+	const [guesses, setGuesses] = useState([])
+
+	function handleGuessSubmit(tentativeGuess) {
+		setGuesses([...guesses, tentativeGuess])
+	}
 	return (
 		<>
-			<TextInput />
+			<GuessResults guesses={guesses} />
+			<TextInput handleGuessSubmit={handleGuessSubmit} />
 		</>
 	)
 }

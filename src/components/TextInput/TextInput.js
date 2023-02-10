@@ -1,12 +1,19 @@
 import React, { useState } from 'react'
 
-function TextInput() {
-	const [guess, setGuess] = useState('')
+function TextInput({ handleGuessSubmit }) {
+	const [tentativeGuess, setTentativeGuess] = useState('')
 
 	function handleSubmit(event) {
 		event.preventDefault()
 
-		setGuess('')
+		if (tentativeGuess.length !== 5) {
+			window.alert('Please enter exactly 5 characters')
+			return
+		}
+
+		handleGuessSubmit(tentativeGuess)
+
+		setTentativeGuess('')
 	}
 
 	return (
@@ -20,9 +27,9 @@ function TextInput() {
 					type='text'
 					minLength={5}
 					maxLength={5}
-					value={guess}
+					value={tentativeGuess}
 					onChange={(event) => {
-						setGuess(event.target.value)
+						setTentativeGuess(event.target.value)
 					}}
 				/>
 			</form>
